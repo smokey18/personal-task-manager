@@ -18,7 +18,15 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::where('user_id', auth()->id())->get();
+        $tasks = Task::where('user_id', auth()->id())
+            ->when(request('search'), function ($query, $search) {
+                $query->where('title', 'LIKE', "%{$search}%")
+                    ->orWhere('description', 'LIKE', "%{$search}%");
+            })
+            ->when(request('status'), function ($query, $status) {
+                $query->where('status', $status);
+            })
+            ->paginate(5);
         return Inertia::render('Tasks/Index', ['tasks' => $tasks]);
     }
 
@@ -43,6 +51,7 @@ class TaskController extends Controller
         ]);
 
         Task::create([
+            'user_id' => auth()->id(),
             'title' => $request['title'],
             'description' => $request['description'],
             'due_date' => $request['due_date'],
@@ -57,6 +66,10 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
+        $task = Task::where('user_id', auth()->id())
+            ->where('id', $task->id)
+            ->firstOrFail();
+
         return Inertia::render('Tasks/Show', ['task' => $task]);
     }
 
@@ -65,6 +78,10 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
+        $task = Task::where('user_id', auth()->id())
+            ->where('id', $task->id)
+            ->firstOrFail();
+
         return Inertia::render('Tasks/Edit', ['task' => $task]);
     }
 
@@ -81,6 +98,7 @@ class TaskController extends Controller
         ]);
 
         Task::findOrFail($id)->update([
+            'user_id' => auth()->id(),
             'title' => $request['title'],
             'description' => $request['description'],
             'due_date' => $request['due_date'],

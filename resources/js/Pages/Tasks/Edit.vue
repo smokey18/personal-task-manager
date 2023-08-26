@@ -1,9 +1,10 @@
 <script setup>
 import BreezeAuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import BreezeLabel from '@/Components/InputLabel.vue';
-import BreezeInput from '@/Components/TextInput.vue';
-import BreezeTextArea from '@/Components/TextArea.vue';
-import BreezeSelect from '@/Components/BreezeSelect.vue';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import TextInput from '@/Components/TextInput.vue';
+import TextArea from '@/Components/TextArea.vue';
+import InputSelect from '@/Components/InputSelect.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
@@ -29,7 +30,7 @@ const submit = () => {
     <BreezeAuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Edit Post
+                Edit Task
             </h2>
         </template>
 
@@ -42,53 +43,45 @@ const submit = () => {
                             <div className="flex flex-col">
                                 <div className="mb-4">
 
-                                    <BreezeLabel for="title" value="Title" />
+                                    <InputLabel for="title" value="Title" />
 
-                                    <BreezeInput id="title" type="text" class="mt-1 block w-full" v-model="form.title"
+                                    <TextInput id="title" type="text" class="mt-1 block w-full" v-model="form.title"
                                         autofocus />
 
-                                    <span className="text-red-600" v-if="form.errors.title">
-                                        {{ form.errors.title }}
-                                    </span>
+                                    <InputError class="mt-2" :message="form.errors.title" />
                                 </div>
 
                                 <div className="mb-4">
 
-                                    <BreezeLabel for="description" value="Description" />
+                                    <InputLabel for="description" value="Description" />
 
-                                    <BreezeTextArea id="description" class="mt-1 block w-full" v-model="form.description" />
+                                    <TextArea id="description" class="mt-1 block w-full" v-model="form.description" />
 
-                                    <span className="text-red-600" v-if="form.errors.description">
-                                        {{ form.errors.description }}
-                                    </span>
+                                    <InputError class="mt-2" :message="form.errors.description" />
                                 </div>
 
                                 <div className="mb-4">
 
-                                    <BreezeLabel for="due_date" value="Due Date" />
+                                    <InputLabel for="due_date" value="Due Date" />
 
-                                    <BreezeInput id="due_date" type="date" class="mt-1 block w-full"
+                                    <TextInput id="due_date" type="date" class="mt-1 block w-full"
                                         v-model="form.due_date" />
 
-                                    <span className="text-red-600" v-if="form.errors.due_date">
-                                        {{ form.errors.due_date }}
-                                    </span>
+                                    <InputError class="mt-2" :message="form.errors.due_date" />
                                 </div>
 
                                 <div className="mb-4">
 
-                                    <BreezeLabel for="status" value="Status" />
+                                    <InputLabel for="status" value="Status" />
 
-                                    <BreezeSelect id="status" class="mt-1 block w-full" v-model="form.status" :options="[
+                                    <InputSelect id="status" class="mt-1 block w-full" v-model="form.status" :options="[
                                         { label: 'Select Status', value: '', disabled: true, selected: true },
                                         { label: 'Not Started', value: 'Not Started', editedValue: 'Not Started' },
                                         { label: 'In Progress', value: 'In Progress', editedValue: 'In Progress' },
                                         { label: 'Completed', value: 'Completed', editedValue: 'Completed' },
                                     ]" />
 
-                                    <span className="text-red-600" v-if="form.errors.status">
-                                        {{ form.errors.status }}
-                                    </span>
+                                    <InputError class="mt-2" :message="form.errors.status" />
                                 </div>
 
                             </div>
