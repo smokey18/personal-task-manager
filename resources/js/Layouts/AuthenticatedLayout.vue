@@ -33,6 +33,9 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('tasks.index')" :active="route().current('tasks.*')">
                                     Tasks
                                 </NavLink>
+                                <NavLink :href="route('graphiql')" :active="route().current('graphiql')">
+                                    GraphiQL
+                                </NavLink>
                             </div>
                         </div>
 

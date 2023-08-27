@@ -35,22 +35,22 @@ const form = useForm({
                         <form>
                             <div className="flex flex-col">
                                 <div class="mb-4">
-                                    <label class="block text-sm font-medium text-gray-700">Title</label>
+                                    <label class="block text-sm font-medium text-gray-700 underline">Title</label>
                                     <span class="mt-1 text-lg">{{ form.title }}</span>
                                 </div>
 
                                 <div class="mb-4">
-                                    <label class="block text-sm font-medium text-gray-700">Description</label>
+                                    <label class="block text-sm font-medium text-gray-700 underline">Description</label>
                                     <p class="mt-1">{{ form.description }}</p>
                                 </div>
 
                                 <div class="mb-4">
-                                    <label class="block text-sm font-medium text-gray-700">Due Date</label>
+                                    <label class="block text-sm font-medium text-gray-700 underline">Due Date</label>
                                     <span class="mt-1 block">{{ form.due_date }}</span>
                                 </div>
 
                                 <div class="mb-4">
-                                    <label class="block text-sm font-medium text-gray-700">Status</label>
+                                    <label class="block text-sm font-medium text-gray-700 underline">Status</label>
                                     <span class="mt-1 block">{{ form.status }}</span>
                                 </div>
                             </div>
