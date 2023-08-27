@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "postinstall": "npm run prod"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",
@@ -22,5 +23,8 @@
         "vue": "^3.3.4",
         "vue-axios": "^3.5.2",
         "vue-router": "^4.2.4"
+    },
+    "engines": {
+        "node": "18.x"
     }
 }
