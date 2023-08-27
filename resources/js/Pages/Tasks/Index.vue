@@ -3,9 +3,9 @@ import BreezeAuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import { ref, watch } from "vue";
 import { Inertia } from "@inertiajs/inertia";
-import Pagination from "@/Components/Pagination.vue";
-import InputSelect from '@/Components/InputSelect.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
+import Pagination from "@/components/Pagination.vue";
+import InputSelect from '@/components/InputSelect.vue';
+import PrimaryButton from '@/components/PrimaryButton.vue';
 
 const props = defineProps({
     tasks: {
